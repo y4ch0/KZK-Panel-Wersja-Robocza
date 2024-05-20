@@ -462,6 +462,41 @@ h1.primary,h2.primary,h3.primary,h4.primary,h5.primary,h6.primary {
     padding-left: 0.25rem !important;
 }
 
+span.tag {
+    background-color: #b8b8b8;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.15rem 0.35rem;
+    border-radius: 0.25rem;
+    color: #fff;
+    margin: 0;
+}
+
+span.tag.primary {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+span.tag.secondary {
+    background-color: var(--secondary);
+    color: #fff;
+}
+
+span.tag.warning {
+    background-color: var(--warning);
+    color: black;
+}
+
+span.tag.danger {
+    background-color: var(--danger);
+    color: #fff;
+}
+
+span.tag.confirmation {
+    background-color: var(--confirmation);
+    color: #fff;
+}
+
 @media screen and (max-width: 600px) {
     .bp-xs {
         width: 90% !important;
