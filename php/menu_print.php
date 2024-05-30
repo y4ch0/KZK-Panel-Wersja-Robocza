@@ -11,19 +11,19 @@ function ReturnMenu($userId,$webPage) {
             ],
             "grafik.php" => [
                 "Tytul" => "Grafik pracy",
-                "Ikona" => "fa-solid fa-house",
+                "Ikona" => "fa-solid fa-calendar",
             ],
             "pojazdy.php" => [
                 "Tytul" => "Spis pojazdów",
-                "Ikona" => "fa-solid fa-house",
+                "Ikona" => "fa-solid fa-bus",
             ],
             "sluzby.php" => [
                 "Tytul" => "Spis służb",
-                "Ikona" => "fa-solid fa-house",
+                "Ikona" => "fa-solid fa-book",
             ],
             "pracownicy.php" => [
                 "Tytul" => "Spis pracowników",
-                "Ikona" => "fa-solid fa-house",
+                "Ikona" => "fa-solid fa-person",
             ],
         ];
         foreach ($linkSet as $key => $value) {
@@ -46,19 +46,23 @@ function ReturnMenu($userId,$webPage) {
             ],
             "grafik.php" => [
                 "Tytul" => "Grafik pracy",
-                "Ikona" => "fa-solid fa-house",
+                "Ikona" => "fa-solid fa-calendar",
             ],
             "pojazdy.php" => [
                 "Tytul" => "Spis pojazdów",
-                "Ikona" => "fa-solid fa-house",
+                "Ikona" => "fa-solid fa-bus",
             ],
             "sluzby.php" => [
                 "Tytul" => "Spis służb",
-                "Ikona" => "fa-solid fa-house",
+                "Ikona" => "fa-solid fa-book",
             ],
             "pracownicy.php" => [
                 "Tytul" => "Spis pracowników",
-                "Ikona" => "fa-solid fa-house",
+                "Ikona" => "fa-solid fa-person",
+            ],
+            "dyspozytor.php" => [
+                "Tytul" => "Panel dyspozytora",
+                "Ikona" => "fa-solid fa-pen",
             ],
         ];
         foreach ($linkSet as $key => $value) {
@@ -81,19 +85,19 @@ function ReturnMenu($userId,$webPage) {
             ],
             "grafik.php" => [
                 "Tytul" => "Grafik pracy",
-                "Ikona" => "fa-solid fa-house",
+                "Ikona" => "fa-solid fa-calendar",
             ],
             "pojazdy.php" => [
                 "Tytul" => "Spis pojazdów",
-                "Ikona" => "fa-solid fa-house",
+                "Ikona" => "fa-solid fa-bus",
             ],
             "sluzby.php" => [
                 "Tytul" => "Spis służb",
-                "Ikona" => "fa-solid fa-house",
+                "Ikona" => "fa-solid fa-book",
             ],
             "pracownicy.php" => [
                 "Tytul" => "Spis pracowników",
-                "Ikona" => "fa-solid fa-house",
+                "Ikona" => "fa-solid fa-person",
             ],
         ];
         foreach ($linkSet as $key => $value) {
@@ -116,19 +120,27 @@ function ReturnMenu($userId,$webPage) {
             ],
             "grafik.php" => [
                 "Tytul" => "Grafik pracy",
-                "Ikona" => "fa-solid fa-house",
+                "Ikona" => "fa-solid fa-calendar",
             ],
             "pojazdy.php" => [
                 "Tytul" => "Spis pojazdów",
-                "Ikona" => "fa-solid fa-house",
+                "Ikona" => "fa-solid fa-bus",
             ],
             "sluzby.php" => [
                 "Tytul" => "Spis służb",
-                "Ikona" => "fa-solid fa-house",
+                "Ikona" => "fa-solid fa-book",
             ],
             "pracownicy.php" => [
                 "Tytul" => "Spis pracowników",
-                "Ikona" => "fa-solid fa-house",
+                "Ikona" => "fa-solid fa-person",
+            ],
+            "dziennik-zdarzen.php" => [
+                "Tytul" => "Dziennik zdarzeń",
+                "Ikona" => "fa-solid fa-table",
+            ],
+            "dyspozytor.php" => [
+                "Tytul" => "Panel dyspozytora",
+                "Ikona" => "fa-solid fa-pen",
             ],
         ];
         foreach ($linkSet as $key => $value) {

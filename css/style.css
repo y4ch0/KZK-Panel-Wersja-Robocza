@@ -39,8 +39,17 @@ html {
     padding: 0 !important;
 }
 
+.d-inline {
+    display: inline-block;
+}
+
 .grid-3-columns {
     grid-template-columns: auto auto auto;
+    gap: 1rem;
+}
+
+.grid-2-columns {
+    grid-template-columns: auto auto;
     gap: 1rem;
 }
 
@@ -433,6 +442,39 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+p.notification {
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--secondary);
+    background-color: rgba(0,0,0,0.1);
+    margin: 1rem 0;
+}
+
+p.notification.primary {
+    border: 1px solid var(--primary) !important;
+    background-color: rgba(0,0,255,0.25) !important;
+}
+
+p.notification.secondary {
+    border: 1px solid var(--secondary) !important;
+    background-color: rgba(0,0,0,0.1) !important;
+}
+
+p.notification.warning {
+    border: 1px solid var(--warning) !important;
+    background-color: rgba(255, 145, 0, 0.5) !important;
+}
+
+p.notification.danger {
+    border: 1px solid var(--danger) !important;
+    background-color: rgba(255,0,0,0.35) !important;
+}
+
+p.notification.confirmation {
+    border: 1px solid var(--confirmation) !important;
+    background-color: rgba(0,255,0,0.35) !important;
 }
 
 p, h1, h2, h3, h4, h5, h6, span {
