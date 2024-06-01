@@ -47,16 +47,17 @@
             <form method="post">
                 <div class="d-grid grid-2-columns">
                     <div class="input-row">
-                        <label for="grafikData">Data od:</label>
+                        <label for="grafikData1">Data od:</label>
                         <input type="date" id="grafikData1" name="minGrafikData" autocomplete="off">
                     </div>
                     <div class="input-row">
-                        <label for="grafikData">Data do:</label>
+                        <label for="grafikData2">Data do:</label>
                         <input type="date" id="grafikData2" name="maxGrafikData" autocomplete="off">
                     </div>
                 </div>
                 <input class="btn primary" value="Sprawdź grafik" type="submit" name="grafikSubmit">
             </form>
+            <button class="btn secondary m-lr-2" onclick="window.location.href='edytuj-grafik.php'">Edytuj grafik</button>
             <div class="responsive-table">
                 <table class="ta-center">
                     <?php

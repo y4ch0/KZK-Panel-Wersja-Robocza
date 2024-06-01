@@ -21,8 +21,12 @@
                     $conn = new mysqli("localhost","root","","y4ch0");
                     $result = $conn->query("SELECT nazwaUzytkownika,typKonta,stanowisko FROM konta WHERE konta.id = '$uid'");
                     if($row = $result->fetch_row()) {
-                        echo "<span class='title'>".$row[0]."</span>";
-                        echo "<span class='subtitle'>".$row[1]." (".$row[2].")</span>";
+                        if($row[1] == "Dyspozytor" || $row[1] == "Administracja" || $row[1] == "Zarząd") {
+                            echo "<span class='title'>".$row[0]."</span>";
+                            echo "<span class='subtitle'>".$row[1]." (".$row[2].")</span>";
+                        } else {
+                            header("location:php/logout.php");
+                        }
                     } else {
                         header("location:php/logout.php");
                     }
@@ -32,7 +36,7 @@
                 <ul class="navbar-links">
                     <?php
                         include_once("php/menu_print.php");
-                        ReturnMenu($uid,"grafik.php");
+                        ReturnMenu($uid,"dyspozytor.php");
                     ?>
                     <hr>
                     <li><a href="php/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i> Wyloguj się</a></li>
