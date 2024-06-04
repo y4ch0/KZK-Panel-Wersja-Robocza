@@ -28,8 +28,12 @@
                 <?php
                     $result = $conn->query("SELECT nazwaUzytkownika,typKonta,stanowisko FROM konta WHERE konta.id = '$uid'");
                     if($row1 = $result->fetch_row()) {
-                        echo "<span class='title'>".$row1[0]."</span>";
-                        echo "<span class='subtitle'>".$row1[1]." (".$row1[2].")</span>";
+                        if($row1[1] == "Administracja" || $row1[1] == "Zarząd") {
+                            echo "<span class='title'>".$row1[0]."</span>";
+                            echo "<span class='subtitle'>".$row1[1]." (".$row1[2].")</span>";
+                        } else {
+                            header("location:index.php");
+                        }
                     } else {
                         header("location:php/logout.php");
                     }
@@ -62,14 +66,6 @@
                     <img src=<?php echo $image ?> alt="zdjecie pojazdu" class="w-full" id="bus-photo">
                 </div>
             </div>
-            <?php
-                if($row1[1] == "Administracja" || $row1[1] == "Zarząd") {
-                    echo "
-                    <button class='btn warning' onclick=\"window.location.href='edytuj-pojazd.php'\">Edytuj pojazd</button>
-                    <button class='btn danger' onclick=\"window.location.href='usun-pojazd.php'\">Usuń pojazd</button>
-                    ";
-                }
-            ?>
         </div>
         <div class="section no-bg d-grid no-tr-items grid-3-columns">
             <div>
@@ -94,11 +90,11 @@
                 <table class="m-lr-2">
                     <tr>
                         <td><b>Data rejestracji</b></td>
-                        <td class="ta-right"><span class="tag primary"><?php echo $row[4] ?></span></td>
+                        <td class="ta-right"><span class="tag danger"><?php echo $row[4] ?></span></td>
                     </tr>
                     <tr>
                         <td><b>Ważność prz. tech.</b></td>
-                        <td class="ta-right"><span class="tag"><?php echo $row[5] ?></span></td>
+                        <td class="ta-right"><span class="tag warning"><?php echo $row[5] ?></span></td>
                     </tr>
                     <tr>
                         <td><b>Nr rejestracyjny</b></td>

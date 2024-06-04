@@ -60,10 +60,6 @@ function ReturnMenu($userId,$webPage) {
                 "Tytul" => "Spis pracowników",
                 "Ikona" => "fa-solid fa-person",
             ],
-            "dyspozytor.php" => [
-                "Tytul" => "Panel dyspozytora",
-                "Ikona" => "fa-solid fa-pen",
-            ],
         ];
         foreach ($linkSet as $key => $value) {
             echo "<li>";
@@ -137,10 +133,6 @@ function ReturnMenu($userId,$webPage) {
             "dziennik-zdarzen.php" => [
                 "Tytul" => "Dziennik zdarzeń",
                 "Ikona" => "fa-solid fa-table",
-            ],
-            "dyspozytor.php" => [
-                "Tytul" => "Panel dyspozytora",
-                "Ikona" => "fa-solid fa-pen",
             ],
         ];
         foreach ($linkSet as $key => $value) {

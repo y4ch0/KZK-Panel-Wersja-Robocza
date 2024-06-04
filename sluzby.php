@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KZK Bielki - Grafik</title>
+    <title>KZK Bielki - Spis służb</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/7535758241.js" crossorigin="anonymous"></script>
     <script src="js/navbar.js"></script>
@@ -32,7 +32,7 @@
                 <ul class="navbar-links">
                     <?php
                         include_once("php/menu_print.php");
-                        ReturnMenu($uid,"grafik.php");
+                        ReturnMenu($uid,"sluzby.php");
                     ?>
                     <hr>
                     <li><a href="php/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i> Wyloguj się</a></li>
@@ -42,39 +42,39 @@
     </div>
     <main>
         <div class="section">
-            <h2 class="page-title">Grafik pracy</h2>
+            <h2 class="page-title">Spis służb</h2>
             <hr>
-            <form method="post">
-                <div class="d-grid grid-2-columns">
-                    <div class="input-row">
-                        <label for="grafikData1">Data od:</label>
-                        <input type="date" id="grafikData1" name="minGrafikData" autocomplete="off">
-                    </div>
-                    <div class="input-row">
-                        <label for="grafikData2">Data do:</label>
-                        <input type="date" id="grafikData2" name="maxGrafikData" autocomplete="off">
-                    </div>
-                </div>
-                <input class="btn primary" value="Sprawdź grafik" type="submit" name="grafikSubmit">
-            </form>
-            <button class="btn secondary m-lr-2" onclick="window.location.href='edytuj-grafik.php'">Edytuj grafik</button>
             <div class="responsive-table">
                 <table class="ta-center">
+                    <tr>
+                        <th>Kod służby</th>
+                        <th>Linia</th>
+                        <th>Przystanek początkowy</th>
+                        <th>Godz. rozp.</th>
+                        <th>Godz. zak.</th>
+                        <th title="Dopuszczone klasy taborowe">DKT</th>
+                    </tr>
                     <?php
-                        require_once("php/grafik/print_grafik.php");
-                        if(isset($_POST["grafikSubmit"])) {
-                            if(!empty($_POST['minGrafikData']) && !empty($_POST['maxGrafikData']))  {
-
-                                ReturnGrafik($uid,$_POST["minGrafikData"],$_POST["maxGrafikData"] );
+                        $sluzbyQuery = $conn->query("SELECT * FROM sluzby ORDER BY linia");
+                        while($row = $sluzbyQuery->fetch_row()) {
+                            $cleantime1 = substr($row[4],0,-3);
+                            $cleantime2 = substr($row[5],0,-3);
+                            $kursowkaLink = null;
+                            if($row[7] == "n/d") {
+                                $kursowkaLink = $row[1]." <span class='tag danger'>Brak kursówki</span>";
                             } else {
-                                echo "
-                                <p class='notification danger'>Proszę wprowadzić obie daty.</p>
-                                ";
+                                $kursowkaLink = "<a href='img/kursowki/$row[7]'>".$row[1]."</a>";
                             }
-                        } else if(array_key_exists("minGrafikData",$_SESSION) && array_key_exists("maxGrafikData",$_SESSION)) {
-                            ReturnGrafik($uid,$_SESSION["minGrafikData"],$_SESSION["maxGrafikData"] );
-                            echo "<p><span class='tag warning'><i class=\"fa-solid fa-circle-exclamation\"></i> Wyświetlam zakres grafiku z zapisanego: ".$_SESSION["minGrafikData"]." - ".$_SESSION["maxGrafikData"]."</span></p>";
-                            return;
+                            echo "
+                            <tr>
+                                <td>".$kursowkaLink."</td>
+                                <td>".$row[2]."</td>
+                                <td>".$row[3]."</td>
+                                <td>".$cleantime1."</td>
+                                <td>".$cleantime2."</td>
+                                <td>".$row[6]."</td>
+                            </tr>
+                            ";
                         }
                     ?>
                 </table>

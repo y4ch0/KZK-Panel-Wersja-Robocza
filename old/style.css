@@ -406,7 +406,7 @@ section .page-title,.section .page-title {
     margin-bottom: 1rem;
 }
 
-.input-row input {
+.input-row input, select {
     width: 100%;
     border-radius: 0.25rem;
     border: 1px solid #e2e2e2;

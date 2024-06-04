@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>KZK Bielki - Spis pojazdów</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/7535758241.js" crossorigin="anonymous"></script>
     <script src="js/navbar.js"></script>
@@ -44,6 +44,13 @@
         <div class="section">
             <h2 class="page-title">Spis pojazdów</h2>
             <hr>
+            <?php
+                if($row[1] == "Administracja" || $row[1] == "Zarząd") {
+                    echo "
+                    <button class='btn warning' onclick=\"window.location.href='dodaj-pojazd.php'\">Dodaj pojazd</button>
+                    ";
+                }
+            ?>
             <table class="ta-center">
                 <tr>
                     <th>#</th>
