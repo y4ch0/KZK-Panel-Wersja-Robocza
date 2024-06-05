@@ -57,7 +57,7 @@
                         <th>Uprawnienia dodatkowe</th>
                     </tr>
                     <?php
-                        $pojazdyQuery = $conn->query("SELECT * FROM konta ORDER BY dataZatrudnenia");
+                        $pojazdyQuery = $conn->query("SELECT * FROM konta ORDER BY dataZatrudnienia");
                         while($row = $pojazdyQuery->fetch_row()) {
                             echo "<tr>
                                 <td>".$row[1]."</td>

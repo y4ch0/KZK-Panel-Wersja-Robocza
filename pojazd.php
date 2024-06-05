@@ -65,8 +65,8 @@
             <?php
                 if($row1[1] == "Administracja" || $row1[1] == "Zarząd") {
                     echo "
-                    <button class='btn warning' onclick=\"window.location.href='edytuj-pojazd.php'\">Edytuj pojazd</button>
-                    <button class='btn danger' onclick=\"window.location.href='usun-pojazd.php'\">Usuń pojazd</button>
+                    <button class='btn warning' onclick=\"window.location.href='edytuj-pojazd.php?id=$pid'\">Edytuj pojazd</button>
+                    <button class='btn danger' onclick=\"window.location.href='usun-pojazd.php?id=$pid'\">Usuń pojazd</button>
                     ";
                 }
             ?>

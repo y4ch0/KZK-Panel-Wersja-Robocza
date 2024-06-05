@@ -53,7 +53,7 @@
     </div>
     <main>
         <div class="section">
-            <h2 class="page-title">Karta pojazdu <?php echo "#".$row[7] ?></h2>
+            <h2 class="page-title">Edycja pojazdu <?php echo "#".$row[7] ?></h2>
             <hr>
             <div>
                 <div class="w-50 mx-auto bp-m">
@@ -67,70 +67,105 @@
                 </div>
             </div>
         </div>
-        <div class="section no-bg d-grid no-tr-items grid-3-columns">
-            <div>
-                <h3>Dane techniczne</h3>
-                <table class="m-lr-2">
-                    <tr>
-                        <td><b>Producent</b></td>
-                        <td class="ta-right"><?php echo $row[1] ?></td>
-                    </tr>
-                    <tr>
-                        <td><b>Model</b></td>
-                        <td class="ta-right"><?php echo $row[2] ?></td>
-                    </tr>
-                    <tr>
-                        <td><b>Klasa taborowa</b></td>
-                        <td class="ta-right"><?php echo $row[8] ?></td>
-                    </tr>
-                </table>
+        <form method="post">
+            <div class="section no-bg d-grid no-tr-items grid-3-columns">
+                <div>
+                    <h3>Dane techniczne</h3>
+                    <table class="m-lr-2">
+                        <tr>
+                            <td><b>Producent</b></td>
+                            <td class="ta-right"><input type="text" name="producent" value="<?php echo $row[1] ?>" class="w-full"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Model</b></td>
+                            <td class="ta-right"><input type="text" name="model" value="<?php echo $row[2] ?>" class="w-full"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Klasa taborowa</b></td>
+                            <td class="ta-right">
+                                <?php
+                                    $klasyTaborowe = [
+                                        "A",
+                                        "B",
+                                        "C",
+                                        "D"
+                                    ];
+                                    echo "<select name='klasaTaborowa'>";
+                                    foreach($klasyTaborowe as $value) {
+                                        if($value == $row[8]) {
+                                            echo "<option value='$value' selected>$value</option>";
+                                        } else {
+                                            echo "<option value='$value'>$value</option>";
+                                        }
+                                    }
+                                    echo "</select>";
+                                ?>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <h3>Dane prawne</h3>
+                    <table class="m-lr-2">
+                        <tr>
+                            <td><b>Data rejestracji</b></td>
+                            <td class="ta-right"><input type="date" name="dataRejestracji" value="<?php echo $row[4] ?>" class="w-full"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Ważność prz. tech.</b></td>
+                            <td class="ta-right"><input type="date" name="dataPrzegladu" value="<?php echo $row[5] ?>" class="w-full"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Nr rejestracyjny</b></td>
+                            <td class="ta-right"><input type="text" name="nrRejestracyjny" value="<?php echo $row[6] ?>" class="w-full"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <h3>Dane pozostałe</h3>
+                    <table class="m-lr-2">
+                        <tr>
+                            <td><b>Nr ewidencyjny</b></td>
+                            <td class="ta-right"><input type="text" name="nrTaborowy" value="<?php echo $row[7] ?>" class="w-full"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Uwagi</b></td>
+                            <td class="ta-right"><input type="text" name="uwagi" value="<?php echo $row[9] ?>" class="w-full"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Dostępność</b></td>
+                            <td class="ta-right">
+                                <?php
+                                    $DDR = [
+                                        "0" => "NIE",
+                                        "1" => "TAK",
+                                    ];
+                                    echo "<select name='DDR'>";
+                                    foreach($DDR as $key=>$value) {
+                                        if($key == $row[10]) {
+                                            echo "<option value='$key' selected>$value</option>";
+                                        } else {
+                                            echo "<option value='$key'>$value</option>";
+                                        }
+                                    }
+                                    echo "</select>";
+                                ?>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <div>
-                <h3>Dane prawne</h3>
-                <table class="m-lr-2">
-                    <tr>
-                        <td><b>Data rejestracji</b></td>
-                        <td class="ta-right"><span class="tag danger"><?php echo $row[4] ?></span></td>
-                    </tr>
-                    <tr>
-                        <td><b>Ważność prz. tech.</b></td>
-                        <td class="ta-right"><span class="tag warning"><?php echo $row[5] ?></span></td>
-                    </tr>
-                    <tr>
-                        <td><b>Nr rejestracyjny</b></td>
-                        <td class="ta-right"><?php echo $row[6] ?></td>
-                    </tr>
-                </table>
+            <div class="section h-fit">
+                <input type="submit" value="Zmień dane" class="btn confirmation" name="changeDataSubmit">
+                <?php
+                    require_once("php/pojazd/edytuj_dane.php");
+                    if(isset($_POST["changeDataSubmit"])) {
+                        EditVehicleData($pid,$_GET["id"],$_POST["producent"],$_POST["model"],$_POST["DDR"],$_POST["dataRejestracji"],$_POST["dataPrzegladu"],$_POST["nrRejestracyjny"],$_POST["nrTaborowy"],$_POST["uwagi"],$_POST["DDR"]);
+                        echo "<meta http-equiv='refresh' content='0'>";
+                    }
+                ?>
             </div>
-            <div>
-                <h3>Dane pozostałe</h3>
-                <table class="m-lr-2">
-                    <tr>
-                        <td><b>Nr ewidencyjny</b></td>
-                        <td class="ta-right">#<?php echo $row[7] ?></td>
-                    </tr>
-                    <tr>
-                        <td><b>Uwagi</b></td>
-                        <td class="ta-right"><?php echo $row[9] ?></td>
-                    </tr>
-                    <tr>
-                        <td><b>Dostępność</b></td>
-                        <?php
-                            $ikonka = "";
-                            switch($row[10]) {
-                                case 0:
-                                    $ikonka = "<i class='fa-solid fa-xmark' style='color:red;'></i>";
-                                    break;
-                                case 1:
-                                    $ikonka = "<i class='fa-solid fa-check' style='color:green;'></i>";
-                                    break;
-                            };
-                        ?>
-                        <td class="ta-right"><?php echo $ikonka ?></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
+        </form>
     </main>
 </body>
 </html>
