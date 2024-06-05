@@ -23,4 +23,5 @@
             }
         }
     }
+    header("location:../../grafik.php");
 ?>

@@ -4,7 +4,7 @@
 }
 
 :root {
-    --primary: blue;
+    --primary: rgb(25, 102, 202);
     --secondary: grey;
     --warning: orange;
     --danger: #dd2727;
@@ -282,6 +282,7 @@ html {
 .responsive-table {
     width: 100%;
     overflow-x: auto;
+    padding: 0 !important;
 }
 
 .navbar {
@@ -430,6 +431,10 @@ section .page-title,.section .page-title {
     padding: 0.35rem 0.5rem;
     outline: none;
     display: block !important;
+}
+
+textarea {
+    resize: vertical;
 }
 
 .input-row input:focus, select:focus, textarea:focus {

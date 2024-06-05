@@ -57,7 +57,7 @@
                         <th>Uprawnienia dodatkowe</th>
                     </tr>
                     <?php
-                        $pojazdyQuery = $conn->query("SELECT * FROM konta ORDER BY id");
+                        $pojazdyQuery = $conn->query("SELECT * FROM konta ORDER BY dataZatrudnenia");
                         while($row = $pojazdyQuery->fetch_row()) {
                             echo "<tr>
                                 <td>".$row[1]."</td>
@@ -89,21 +89,21 @@
                             $nadzor = $row[11];
                             switch($klasaC) {
                                 case 1:
-                                    echo "<span title='UD-1; Uprawnienie na kierowanie pojazdem przegubowym (klasy C)'>UD-1</span> ";
+                                    echo "<span title='UD-1; Uprawnienie na kierowanie pojazdem przegubowym (klasy C)' class='tag primary'>UD-1</span> ";
                                     break;
                                 default:
                                     break;
                             }
                             switch($kontrolerB) {
                                 case 1:
-                                    echo "<span title='UD-2; Uprawnienie na pracę w formie kontrolera biletów'>UD-2</span> ";
+                                    echo "<span title='UD-2; Uprawnienie na pracę w formie kontrolera biletów' class='tag primary'>UD-2</span> ";
                                     break;
                                 default:
                                     break;
                             }
                             switch($nadzor) {
                                 case 1:
-                                    echo "<span title='UD-3; Uprawnienie na pracę w inspektoracie nadzoru ruchu'>UD-3</span>";
+                                    echo "<span title='UD-3; Uprawnienie na pracę w inspektoracie nadzoru ruchu' class='tag primary'>UD-3</span>";
                                     break;
                                 default:
                                     break;

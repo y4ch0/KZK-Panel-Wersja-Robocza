@@ -23,7 +23,7 @@
                 <?php
                     $result = $conn->query("SELECT nazwaUzytkownika,typKonta,stanowisko FROM konta WHERE konta.id = '$uid'");
                     if($row1 = $result->fetch_row()) {
-                        if($row1[1] == "Administracja" || $row1[1] == "Zarząd") {
+                        if($row1[1] == "Administracja" || $row1[1] == "Zarząd" || $row1[1] == "Dyspozytor") {
                             echo "<span class='title'>".$row1[0]."</span>";
                             echo "<span class='subtitle'>".$row1[1]." (".$row1[2].")</span>";
                         } else {
@@ -115,7 +115,7 @@
                                 } else if (!empty($_SESSION["edytor_Dzien"])) {
                                     $dzien = $_SESSION["edytor_Dzien"];
                                 }
-                                $query = $conn->query("SELECT * FROM pojazdy WHERE klasaTab IN ('A','B','C') AND pojazdy.id NOT IN (SELECT pojazdId FROM grafik WHERE dataSesji = '$dzien') ORDER BY nrTaborowy");
+                                $query = $conn->query("SELECT * FROM pojazdy WHERE klasaTab IN ('A','B','C') AND pojazdy.id NOT IN (SELECT pojazdId FROM grafik WHERE dataSesji = '$dzien') AND DDR = 1 ORDER BY nrTaborowy");
                                 while($row = $query->fetch_row()) {
                                     echo "<option value='$row[0]'>#$row[7] $row[1] $row[2] ($row[8])</option>";
                                 }
@@ -131,7 +131,7 @@
                 <?php
                     require_once("php/grafik/edytor/add_shift.php");
                     if(isset($_POST["grafikAddSubmit"])) {
-                        if(!empty($_POST['pracownikId']) && !empty($_POST['sluzbaId']) && !empty($_POST['pojazdId'])) {
+                        if(!empty($_POST['pracownikId']) && !empty($_POST['sluzbaId']) && !empty($_POST['pojazdId']) && !empty($dzien)) {
                             AddShift($uid,$_POST['pracownikId'],$_POST['sluzbaId'],$_POST['pojazdId'],$dzien,$_POST['notatka']);
                             echo "<meta http-equiv='refresh' content='0'>";
                             echo "<p class='notification confirmation'>Pomyślnie dodano zmianę.</p>";

@@ -36,14 +36,14 @@ function ReturnGrafik($userId,$minGrafikData,$maxGrafikData) {
                 $subQuery = $conn->query("SELECT producent,model,nrTaborowy,rejestracja FROM pojazdy WHERE pojazdy.id = $grafikRow[3]");
                 $subRow = $subQuery->fetch_row();
                 echo "<td><a href='pojazd.php?id=$grafikRow[3]'><span class='tag primary'>".$subRow[2]."</span> ".$subRow[0]." ".$subRow[1]." (".$subRow[3].")</a></td>";
-                $subQuery = $conn->query("SELECT kodLinii,przystPoczatkowy,plikRozklad FROM sluzby WHERE sluzby.id = $grafikRow[4]");
+                $subQuery = $conn->query("SELECT kodLinii,przystPoczatkowy,plikRozklad,id FROM sluzby WHERE sluzby.id = $grafikRow[4]");
                 $subRow = $subQuery->fetch_row();
                 switch($subRow[2]) {
                     case "n/d":
                         echo "<td><span class='tag danger'>Brak kursówki</span></td>";
                         break;
                     default:
-                        echo "<td>".$subRow[0]." <span class='tag danger'>Brak kursówki</span></td>";
+                        echo "<td>".$subRow[0]."</td>";
                         break;
                 }
                 echo "<td>".$grafikRow[5]."</td>";
@@ -79,10 +79,10 @@ function ReturnGrafik($userId,$minGrafikData,$maxGrafikData) {
                 $subRow = $subQuery->fetch_row();
                 switch($subRow[2]) {
                     case "n/d":
-                        echo "<td><span class='tag danger'>Brak kursówki</span></td>";
+                        echo "<td>".$subRow[0]." <span class='tag danger'>Brak kursówki</span></td>";
                         break;
                     default:
-                        echo "<td>".$subRow[0]." <span class='tag danger'>Brak kursówki</span></td>";
+                        echo "<td>".$subRow[0]."</td>";
                         break;
                 }
                 echo "<td>".$grafikRow[5]."</td>";
@@ -128,7 +128,7 @@ function ReturnGrafik($userId,$minGrafikData,$maxGrafikData) {
                         echo "<td><span class='tag danger'>Brak kursówki</span></td>";
                         break;
                     default:
-                        echo "<td>".$subRow[0]." <span class='tag danger'>Brak kursówki</span></td>";
+                        echo "<td>".$subRow[0]."</td>";
                         break;
                 }
                 echo "<td>".$grafikRow[5]."</td>";
@@ -167,10 +167,10 @@ function ReturnGrafik($userId,$minGrafikData,$maxGrafikData) {
                 $subRow = $subQuery->fetch_row();
                 switch($subRow[2]) {
                     case "n/d":
-                        echo "<td>".$subRow[0]." <span class='tag danger'>Brak kursówki</span></td>";
+                        echo "<td><span class='tag danger'>Brak kursówki</span></td>";
                         break;
                     default:
-                        echo "<td><a href='img/kursowki/$subRow[2]'>".$subRow[0]." (".$subRow[1].")</a></td>";
+                        echo "<td>".$subRow[0]."</td>";
                         break;
                 }
                 echo "<td>".$grafikRow[5]."</td>";

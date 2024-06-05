@@ -57,7 +57,14 @@
                 </div>
                 <input class="btn primary" value="Sprawdź grafik" type="submit" name="grafikSubmit">
             </form>
-            <button class="btn secondary m-lr-2" onclick="window.location.href='edytuj-grafik.php'">Edytuj grafik</button>
+            <?php
+                $q1 = $conn->query("SELECT typKonta FROM konta WHERE id = '$uid'");
+                if($row = $q1->fetch_row()) {
+                    if($row[0] == "Zarząd" || $row[0] == "Administracja" || $row[0] == "Dyspozytor") {
+                        echo "<button class=\"btn secondary m-lr-2\" onclick=\"window.location.href='edytuj-grafik.php'\">Edytuj grafik</button>";
+                    }
+                }
+            ?>
             <div class="responsive-table">
                 <table class="ta-center">
                     <?php
