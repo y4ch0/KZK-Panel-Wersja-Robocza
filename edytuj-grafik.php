@@ -81,7 +81,7 @@
                                 } else if (!empty($_SESSION["edytor_Dzien"])) {
                                     $dzien = $_SESSION["edytor_Dzien"];
                                 }
-                                $query = $conn->query("SELECT * FROM konta WHERE czyKierowanieAutobus = 1 AND konta.id NOT IN (SELECT pracownikId FROM grafik WHERE dataSesji = '$dzien')");
+                                $query = $conn->query("SELECT * FROM konta WHERE czyKierowanieAutobus = 1 AND konta.id NOT IN (SELECT pracownikId FROM grafik WHERE dataSesji = '$dzien') AND czyZawieszony = 0");
                                 while($row = $query->fetch_row()) {
                                     echo "<option value='$row[0]'>$row[1]</option>";
                                 }

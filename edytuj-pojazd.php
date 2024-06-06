@@ -160,7 +160,7 @@
                 <?php
                     require_once("php/pojazd/edytuj_dane.php");
                     if(isset($_POST["changeDataSubmit"])) {
-                        EditVehicleData($pid,$_GET["id"],$_POST["producent"],$_POST["model"],$_POST["DDR"],$_POST["dataRejestracji"],$_POST["dataPrzegladu"],$_POST["nrRejestracyjny"],$_POST["nrTaborowy"],$_POST["uwagi"],$_POST["DDR"]);
+                        EditVehicleData($pid,$_GET["id"],$_POST["producent"],$_POST["model"],$_POST["klasaTaborowa"],$_POST["dataRejestracji"],$_POST["dataPrzegladu"],$_POST["nrRejestracyjny"],$_POST["nrTaborowy"],$_POST["uwagi"],$_POST["DDR"]);
                         echo "<meta http-equiv='refresh' content='0'>";
                     }
                 ?>

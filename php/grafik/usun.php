@@ -6,7 +6,7 @@
     $result = $conn->query("SELECT typKonta FROM konta WHERE konta.id = '$uid'");
     if($row = $result->fetch_row()) {
         if($row[0] == "Zarząd" || $row[0] == "Administracja") {
-            $deleteQuery = $conn->query("UPDATE grafik SET pracownikId = NULL WHERE grafik.id = $gid");
+            $deleteQuery = $conn->query("DELETE FROM grafik WHERE grafik.id = $gid");
             if($deleteQuery) {
                 header("location:../../grafik.php");
             } else {

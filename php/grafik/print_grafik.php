@@ -40,7 +40,7 @@ function ReturnGrafik($userId,$minGrafikData,$maxGrafikData) {
                 $subRow = $subQuery->fetch_row();
                 switch($subRow[2]) {
                     case "n/d":
-                        echo "<td><span class='tag danger'>Brak kursówki</span></td>";
+                        echo "<td>".$subRow[0]." <span class='tag danger'>Brak kursówki</span></td>";
                         break;
                     default:
                         echo "<td>".$subRow[0]."</td>";
@@ -125,7 +125,7 @@ function ReturnGrafik($userId,$minGrafikData,$maxGrafikData) {
                 $subRow = $subQuery->fetch_row();
                 switch($subRow[2]) {
                     case "n/d":
-                        echo "<td><span class='tag danger'>Brak kursówki</span></td>";
+                        echo "<td>".$subRow[0]." <span class='tag danger'>Brak kursówki</span></td>";
                         break;
                     default:
                         echo "<td>".$subRow[0]."</td>";
@@ -167,7 +167,7 @@ function ReturnGrafik($userId,$minGrafikData,$maxGrafikData) {
                 $subRow = $subQuery->fetch_row();
                 switch($subRow[2]) {
                     case "n/d":
-                        echo "<td><span class='tag danger'>Brak kursówki</span></td>";
+                        echo "<td>".$subRow[0]." <span class='tag danger'>Brak kursówki</span></td>";
                         break;
                     default:
                         echo "<td>".$subRow[0]."</td>";

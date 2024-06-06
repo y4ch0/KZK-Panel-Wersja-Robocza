@@ -51,49 +51,51 @@
                     ";
                 }
             ?>
-            <table class="ta-center">
-                <tr>
-                    <th>#</th>
-                    <th>Producent</th>
-                    <th>Model</th>
-                    <th>Produkcja</th>
-                    <th>Data przeg.</th>
-                    <th>Nr rejestr.</th>
-                    <th>Klasa tab.</th>
-                    <th title="Dopuszczony do ruchu?">DDR?</th>
-                    <th>Uwagi</th>
-                </tr>
-                <?php
-                    $pojazdyQuery = $conn->query("SELECT * FROM pojazdy ORDER BY nrTaborowy");
-                    while($row = $pojazdyQuery->fetch_row()) {
-                        $ikonka = "";
-                        $title = "";
-                        switch($row[10]) {
-                            case 0:
-                                $ikonka = "<i class='fa-solid fa-xmark' style='color:red;'></i>";
-                                $title = "Nie dopuszczony do ruchu";
-                                break;
-                            case 1:
-                                $ikonka = "<i class='fa-solid fa-check' style='color:green;'></i>";
-                                $title = "Dopuszczony do ruchu";
-                                break;
-                        };
-                        echo "
-                        <tr>
-                            <td><a href='pojazd.php?id=$row[0]'>$row[7]</a></td>
-                            <td>$row[1]</td>
-                            <td>$row[2]</td>
-                            <td>$row[3]</td>
-                            <td>$row[4]</td>
-                            <td>$row[5]</td>
-                            <td>$row[8]</td>
-                            <td title=\"$title\">$ikonka</td>
-                            <td>$row[9]</td>
-                        </tr>
-                        ";
-                    }
-                ?>
-            </table>
+            <div class="responsive-table">
+                <table class="ta-center">
+                    <tr>
+                        <th>#</th>
+                        <th>Producent</th>
+                        <th>Model</th>
+                        <th>Produkcja</th>
+                        <th>Data przeg.</th>
+                        <th>Nr rejestr.</th>
+                        <th>Klasa tab.</th>
+                        <th title="Dopuszczony do ruchu?">DDR?</th>
+                        <th>Uwagi</th>
+                    </tr>
+                    <?php
+                        $pojazdyQuery = $conn->query("SELECT * FROM pojazdy ORDER BY nrTaborowy");
+                        while($row = $pojazdyQuery->fetch_row()) {
+                            $ikonka = "";
+                            $title = "";
+                            switch($row[10]) {
+                                case 0:
+                                    $ikonka = "<i class='fa-solid fa-xmark' style='color:red;'></i>";
+                                    $title = "Nie dopuszczony do ruchu";
+                                    break;
+                                case 1:
+                                    $ikonka = "<i class='fa-solid fa-check' style='color:green;'></i>";
+                                    $title = "Dopuszczony do ruchu";
+                                    break;
+                            };
+                            echo "
+                            <tr>
+                                <td><a href='pojazd.php?id=$row[0]'>$row[7]</a></td>
+                                <td>$row[1]</td>
+                                <td>$row[2]</td>
+                                <td>$row[3]</td>
+                                <td>$row[5]</td>
+                                <td>$row[6]</td>
+                                <td>$row[8]</td>
+                                <td title=\"$title\">$ikonka</td>
+                                <td>$row[9]</td>
+                            </tr>
+                            ";
+                        }
+                    ?>
+                </table>
+            </div>
         </div>
     </main>
 </body>
