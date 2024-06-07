@@ -25,6 +25,7 @@ require __DIR__ . "/php/config.php";
             <form class="d-block mx-auto w-60">
                 <a class="btn danger mx-auto d-block ta-center" href="<?=$auth_url = url($client_id, $redirect_url, $scopes)?>">Zaloguj się przez Discord <i class='fa-brands fa-discord'></i></a>
             </form>
+            <p class="ta-center m-lr-2"><?php echo date("Y")." &copy; y4ch0"; ?></p>
         </div>
     </div>
 </body>

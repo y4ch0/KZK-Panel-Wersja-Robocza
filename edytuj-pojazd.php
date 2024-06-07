@@ -47,6 +47,9 @@
                     ?>
                     <hr>
                     <li><a href="php/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i> Wyloguj się</a></li>
+                    <?php
+                        echo "<li style='padding-left:1rem;margin-top:1rem;'>".date("Y")." &copy; y4ch0</li>";
+                    ?>
                 </ul>
             </nav>
         </div>

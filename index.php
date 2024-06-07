@@ -36,6 +36,9 @@
                     ?>
                     <hr>
                     <li><a href="php/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i> Wyloguj się</a></li>
+                    <?php
+                        echo "<li style='padding-left:1rem;margin-top:1rem;'>".date("Y")." &copy; y4ch0</li>";
+                    ?>
                 </ul>
             </nav>
         </div>
@@ -45,8 +48,8 @@
             <h2 class="page-title">Strona główna</h2>
             <hr>
         </div>
-        <div class="section no-bg d-grid no-tr-items grid-2-columns">
-            <div>
+        <div class="section no-bg d-grid no-tr-items grid-2-columns" style="max-height:400px;">
+            <div style="max-height:400px;">
                 <h3>Dzisiejsza służba</h3>
                 <hr>
                 <?php
@@ -69,7 +72,7 @@
                     }
                 ?>
             </div>
-            <div>
+            <div style="max-height:400px;overflow-y:scroll">
                 <h3>Najnowszy komunikat</h3>
                 <hr>
                 <?php
@@ -81,7 +84,7 @@
                 ?>
             </div>
         </div>
-        <div class="section">
+        <div class="section" style="max-height:800px;overflow-y:auto">
             <h2>Komunikaty:</h2>
             <hr>
             <?php

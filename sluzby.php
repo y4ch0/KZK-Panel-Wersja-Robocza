@@ -36,6 +36,9 @@
                     ?>
                     <hr>
                     <li><a href="php/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i> Wyloguj się</a></li>
+                    <?php
+                        echo "<li style='padding-left:1rem;margin-top:1rem;'>".date("Y")." &copy; y4ch0</li>";
+                    ?>
                 </ul>
             </nav>
         </div>
@@ -55,7 +58,7 @@
                         <th title="Dopuszczone klasy taborowe">DKT</th>
                     </tr>
                     <?php
-                        $sluzbyQuery = $conn->query("SELECT * FROM sluzby ORDER BY linia");
+                        $sluzbyQuery = $conn->query("SELECT * FROM sluzby ORDER BY id");
                         while($row = $sluzbyQuery->fetch_row()) {
                             $cleantime1 = substr($row[4],0,-3);
                             $cleantime2 = substr($row[5],0,-3);
