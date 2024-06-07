@@ -18,7 +18,7 @@
                 <?php
                     session_start();
                     $uid = $_SESSION['user_id'];
-                    $conn = new mysqli("localhost","root","","y4ch0");
+                    $conn = new mysqli("81.171.31.232","y4ch0_03032006","Polkij11!","y4ch0");
                     $result = $conn->query("SELECT nazwaUzytkownika,typKonta,stanowisko FROM konta WHERE konta.id = '$uid'");
                     if($row = $result->fetch_row()) {
                         echo "<span class='title'>".$row[0]."</span>";
@@ -57,7 +57,7 @@
                         <th>Uprawnienia dodatkowe</th>
                     </tr>
                     <?php
-                        $pojazdyQuery = $conn->query("SELECT * FROM konta ORDER BY dataZatrudnienia");
+                        $pojazdyQuery = $conn->query("SELECT * FROM konta WHERE konta.typKonta IN ('Pracownik','Administracja','Zarząd','Dyspozytor') ORDER BY dataZatrudnienia");
                         while($row = $pojazdyQuery->fetch_row()) {
                             echo "<tr>
                                 <td>".$row[1]."</td>
@@ -66,9 +66,9 @@
                                 <td>".$row[2]." (".$row[3].")</td>
                             ";
                             if($row[8] != "") {
-                                $stalyPrzydzial = $conn->query("SELECT producent,model,nrTaborowy FROM pojazdy WHERE id = '$row[8]'");
+                                $stalyPrzydzial = $conn->query("SELECT nrTaborowy FROM pojazdy WHERE id = '$row[8]'");
                                 $row1 = $stalyPrzydzial->fetch_row();
-                                echo "<td><a href='pojazd.php?id=$row[8]'>#$row1[2] $row1[0] $row1[1]</a></td>";
+                                echo "<td><a href='pojazd.php?id=$row[8]'>#$row1[0]</a></td>";
                             } else {
                                 echo "<td>-</td>";
                             }

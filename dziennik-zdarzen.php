@@ -18,7 +18,7 @@
                 <?php
                     session_start();
                     $uid = $_SESSION['user_id'];
-                    $conn = new mysqli("localhost","root","","y4ch0");
+                    $conn = new mysqli("81.171.31.232","y4ch0_03032006","Polkij11!","y4ch0");
                     $result = $conn->query("SELECT nazwaUzytkownika,typKonta,stanowisko FROM konta WHERE konta.id = '$uid'");
                     if($row = $result->fetch_row()) {
                         if($row[1] == "Zarząd" || $row[1] == "Administracja") {
@@ -77,6 +77,8 @@
                             ReturnDziennik($uid,$_SESSION["minDziennikData"],$_SESSION["maxDziennikData"] );
                             echo "<p><span class='tag warning'><i class=\"fa-solid fa-circle-exclamation\"></i> Wyświetlam zakres dziennika zdarzeń z zapisanego: ".$_SESSION["minDziennikData"]." - ".$_SESSION["maxDziennikData"]."</span></p>";
                             return;
+                        } else {
+                            ReturnDziennik($uid,date("Y-m-d 00:00:00"),date("Y-m-d H:i:s"));
                         }
                     ?>
                 </table>

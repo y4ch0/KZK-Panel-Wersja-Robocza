@@ -1,7 +1,7 @@
 <?php
     session_start();
     $uid = $_SESSION['user_id'];
-    $conn = new mysqli("localhost","root","","y4ch0");
+    $conn = new mysqli("81.171.31.232","y4ch0_03032006","Polkij11!","y4ch0");
     $pid = $_GET['id'];
     $pojazdQuery = $conn->query("SELECT * FROM pojazdy WHERE pojazdy.id = $pid");
     if(!($row = $pojazdQuery->fetch_row())) {
@@ -161,6 +161,7 @@
                     require_once("php/pojazd/edytuj_dane.php");
                     if(isset($_POST["changeDataSubmit"])) {
                         EditVehicleData($pid,$_GET["id"],$_POST["producent"],$_POST["model"],$_POST["klasaTaborowa"],$_POST["dataRejestracji"],$_POST["dataPrzegladu"],$_POST["nrRejestracyjny"],$_POST["nrTaborowy"],$_POST["uwagi"],$_POST["DDR"]);
+                        dodajWiersz($uid,"Edytowano pojazd ".$_POST["producent"]." ".$_POST["model"]." #".$_POST["nrTaborowy"]."");
                         echo "<meta http-equiv='refresh' content='0'>";
                     }
                 ?>

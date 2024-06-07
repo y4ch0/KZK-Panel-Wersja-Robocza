@@ -63,8 +63,8 @@ html {
 }
 
 .btn:hover {
-    outline: 3px dotted #0084ff !important;
-    text-decoration: none;
+    filter: opacity(70%);
+    text-decoration: none !important;
 }
 
 .btn.navbar-toggler {
@@ -450,14 +450,15 @@ input, select, textarea {
 
 textarea {
     resize: vertical;
+    outline: none;
 }
 
-.input-row input:focus, select:focus, textarea:focus {
-    border: 1px solid var(--primary);
+.input-row input:focus, .input-row select:focus,.input-row textarea:focus {
+    border: 1px solid var(--primary) !important;
 }
 
-input:focus, select:focus, textarea:focus {
-    border: 1px solid var(--primary);
+input:not([type="submit"]):focus, select:focus, textarea:focus {
+    border: 1px solid var(--primary) !important;
 }
 
 hr {

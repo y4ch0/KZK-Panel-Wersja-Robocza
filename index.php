@@ -18,7 +18,7 @@
                 <?php
                     session_start();
                     $uid = $_SESSION['user_id'];
-                    $conn = new mysqli("localhost","root","","y4ch0");
+                    $conn = new mysqli("81.171.31.232","y4ch0_03032006","Polkij11!","y4ch0");
                     $result = $conn->query("SELECT nazwaUzytkownika,typKonta,stanowisko FROM konta WHERE konta.id = '$uid'");
                     if($row = $result->fetch_row()) {
                         echo "<span class='title'>".$row[0]."</span>";
@@ -65,7 +65,7 @@
                         echo "<p class='ta-center'><a href='pojazd.php?id=$row[3]'>$subRow1[0] $subRow1[1] #$subRow1[2]</a></p>";
                         echo "<p class='ta-center'><i>Uwagi dyspozytora: $row[6]</i></p>";
                     } else {
-                        echo "<p class='m-lr-4' style='display:flex;justify-content:center;align-items:center;width:100%;height:max-content;'><big><i class=\"fa-solid fa-check\" style='color:green;'></i> Masz dzisiaj wolne!</big></p>";
+                        echo "<p class='m-lr-4' style='display:flex;justify-content:center;align-items:center;width:100%;height:max-content;'><big><i class=\"fa-solid fa-check\" style='color:green;'></i> Masz dzisiaj wolne.</big></p>";
                     }
                 ?>
             </div>

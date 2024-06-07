@@ -18,7 +18,7 @@
                 <?php
                     session_start();
                     $uid = $_SESSION['user_id'];
-                    $conn = new mysqli("localhost","root","","y4ch0");
+                    $conn = new mysqli("81.171.31.232","y4ch0_03032006","Polkij11!","y4ch0");
                     $result = $conn->query("SELECT nazwaUzytkownika,typKonta,stanowisko FROM konta WHERE konta.id = '$uid'");
                     if($row = $result->fetch_row()) {
                         echo "<span class='title'>".$row[0]."</span>";
@@ -71,7 +71,6 @@
                         require_once("php/grafik/print_grafik.php");
                         if(isset($_POST["grafikSubmit"])) {
                             if(!empty($_POST['minGrafikData']) && !empty($_POST['maxGrafikData']))  {
-
                                 ReturnGrafik($uid,$_POST["minGrafikData"],$_POST["maxGrafikData"] );
                             } else {
                                 echo "

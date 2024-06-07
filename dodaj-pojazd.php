@@ -1,7 +1,7 @@
 <?php
     session_start();
     $uid = $_SESSION['user_id'];
-    $conn = new mysqli("localhost","root","","y4ch0");
+    $conn = new mysqli("81.171.31.232","y4ch0_03032006","Polkij11!","y4ch0");
 ?>
 <!DOCTYPE html>
 <html lang="pl-PL">
@@ -142,9 +142,11 @@
                     <input type="submit" value="Dodaj pojazd" class="btn confirmation" name="changeDataSubmit">
                     <?php
                         require_once("php/pojazd/dodaj.php");
+                        require_once("php/dziennik_zdarzen/dodaj.php");
                         if(isset($_POST["changeDataSubmit"])) {
                             if(!empty($_POST["producent"]) && !empty($_POST["model"]) && !empty($_POST["dataRejestracji"]) && !empty($_POST["dataPrzegladu"]) && !empty($_POST["nrRejestracyjny"]) && !empty($_POST["nrTaborowy"]) && !empty($_POST["dataProdukcji"])) {
                                 DodajPojazd($uid,$_POST["producent"],$_POST["model"],$_POST["DDR"],$_POST["dataRejestracji"],$_POST["dataPrzegladu"],$_POST["nrRejestracyjny"],$_POST["nrTaborowy"],$_POST["uwagi"],$_POST["DDR"],$_POST["dataProdukcji"]);
+                                dodajWiersz($uid,"Dodano pojazd ".$_POST["producent"]." ".$_POST["model"]." #".$_POST["nrTaborowy"]."");
                             }
                         }
                     ?>
