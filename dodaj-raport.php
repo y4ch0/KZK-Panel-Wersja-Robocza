@@ -25,7 +25,7 @@
                 <?php
                     $result = $conn->query("SELECT nazwaUzytkownika,typKonta,stanowisko,nrSluzbowy FROM konta WHERE konta.id = '$uid'");
                     if($row1 = $result->fetch_row()) {
-                        if($row1[1] == "Zarząd") {
+                        if($row1[1] == "Zarząd" || $row1[1] == "Administracja") {
                             echo "<span class='title'>".$row1[0]."</span>";
                             echo "<span class='subtitle'>".$row1[1]." (".$row1[2].") <small>".$row1[3]."</small></span>";
                         } else {
