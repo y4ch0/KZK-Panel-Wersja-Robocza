@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KZK Bielki - Grafik</title>
+    <title>KZK Bielki - Raporty sesyjne</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/7535758241.js" crossorigin="anonymous"></script>
     <script src="js/navbar.js"></script>
@@ -23,8 +23,12 @@
                     $conn->set_charset("utf8");
                     $result = $conn->query("SELECT nazwaUzytkownika,typKonta,stanowisko,nrSluzbowy FROM konta WHERE konta.id = '$uid'");
                     if($row = $result->fetch_row()) {
-                        echo "<span class='title'>".$row[0]."</span>";
-                        echo "<span class='subtitle'>".$row[1]." (".$row[2].") <small>".$row[3]."</small></span>";
+                        if($row[1] == "Zarząd" || $row[1] == "Administracja") {
+                            echo "<span class='title'>".$row[0]."</span>";
+                            echo "<span class='subtitle'>".$row[1]." (".$row[2].") <small>".$row[3]."</small></span>";
+                        } else {
+                            header("location:php/logout.php");
+                        }
                     } else {
                         header("location:php/logout.php");
                     }
@@ -34,7 +38,7 @@
                 <ul class="navbar-links">
                     <?php
                         include_once("php/menu_print.php");
-                        ReturnMenu($uid,"grafik.php");
+                        ReturnMenu($uid,"raporty-sesyjne.php");
                     ?>
                     <hr>
                     <li><a href="php/logout.php"><i class="fa-solid fa-arrow-right-from-bracket"></i> Wyloguj się</a></li>
@@ -47,44 +51,37 @@
     </div>
     <main>
         <div class="section">
-            <h2 class="page-title">Grafik pracy</h2>
+            <h2 class="page-title">Raporty sesyjne</h2>
             <hr>
             <form method="post">
                 <div class="d-grid grid-2-columns">
                     <div class="input-row">
                         <label for="grafikData1">Data od:</label>
-                        <input type="date" id="grafikData1" name="minGrafikData" autocomplete="off">
+                        <input type="date" id="grafikData1" name="minData" autocomplete="off">
                     </div>
                     <div class="input-row">
                         <label for="grafikData2">Data do:</label>
-                        <input type="date" id="grafikData2" name="maxGrafikData" autocomplete="off">
+                        <input type="date" id="grafikData2" name="maxData" autocomplete="off">
                     </div>
                 </div>
-                <input class="btn primary" value="Sprawdź grafik" type="submit" name="grafikSubmit">
+                <input class="btn primary" value="Sprawdź raporty" type="submit" name="Submit">
             </form>
-            <?php
-                $q1 = $conn->query("SELECT typKonta FROM konta WHERE id = '$uid'");
-                if($row = $q1->fetch_row()) {
-                    if($row[0] == "Zarząd" || $row[0] == "Administracja" || $row[0] == "Dyspozytor") {
-                        echo "<button class=\"btn secondary m-lr-2\" onclick=\"window.location.href='edytuj-grafik.php'\">Edytuj grafik</button>";
-                    }
-                }
-            ?>
+            <button class="btn secondary m-lr-2" onclick="window.location.href='dodaj-raport.php'">Dodaj raport</button>
             <div class="responsive-table">
                 <table class="ta-center">
                     <?php
-                        require_once("php/grafik/print_grafik.php");
-                        if(isset($_POST["grafikSubmit"])) {
-                            if(!empty($_POST['minGrafikData']) && !empty($_POST['maxGrafikData']))  {
-                                ReturnGrafik($uid,$_POST["minGrafikData"],$_POST["maxGrafikData"] );
+                        require_once("php/raporty_sesyjne/print.php");
+                        if(isset($_POST["Submit"])) {
+                            if(!empty($_POST['minData']) && !empty($_POST['maxData']))  {
+                                ReturnRaporty($uid,$_POST["minData"],$_POST["maxData"] );
                             } else {
                                 echo "
                                 <p class='notification danger'>Proszę wprowadzić obie daty.</p>
                                 ";
                             }
-                        } else if(array_key_exists("minGrafikData",$_SESSION) && array_key_exists("maxGrafikData",$_SESSION)) {
-                            ReturnGrafik($uid,$_SESSION["minGrafikData"],$_SESSION["maxGrafikData"] );
-                            echo "<p><span class='tag warning'><i class=\"fa-solid fa-circle-exclamation\"></i> Wyświetlam zakres grafiku z zapisanego: ".$_SESSION["minGrafikData"]." - ".$_SESSION["maxGrafikData"]."</span></p>";
+                        } else if(array_key_exists("minRaportyData",$_SESSION) && array_key_exists("maxRaportyData",$_SESSION)) {
+                            ReturnRaporty($uid,$_SESSION["minRaportyData"],$_SESSION["maxRaportyData"] );
+                            echo "<p><span class='tag warning'><i class=\"fa-solid fa-circle-exclamation\"></i> Wyświetlam zakres raportów z zapisanego: ".$_SESSION["minRaportyData"]." - ".$_SESSION["maxRaportyData"]."</span></p>";
                             return;
                         }
                     ?>

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/7535758241.js" crossorigin="anonymous"></script>
     <script src="js/navbar.js"></script>
+    <link rel="shortcut icon" href="img/kzk_logo_main.ico" type="image/x-icon">
 </head>
 <body>
     <div class="navbar" id="navbar">
@@ -22,11 +23,11 @@
         <div id="nav-content">
             <p class="logged-info">
                 <?php
-                    $result = $conn->query("SELECT nazwaUzytkownika,typKonta,stanowisko FROM konta WHERE konta.id = '$uid'");
+                    $result = $conn->query("SELECT nazwaUzytkownika,typKonta,stanowisko,nrSluzbowy FROM konta WHERE konta.id = '$uid'");
                     if($row1 = $result->fetch_row()) {
                         if($row1[1] == "Administracja" || $row1[1] == "Zarząd") {
                             echo "<span class='title'>".$row1[0]."</span>";
-                            echo "<span class='subtitle'>".$row1[1]." (".$row1[2].")</span>";
+                            echo "<span class='subtitle'>".$row1[1]." (".$row1[2].") <small>".$row1[3]."</small></span>";
                         } else {
                             header("location:index.php");
                         }

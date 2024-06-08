@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/7535758241.js" crossorigin="anonymous"></script>
     <script src="js/navbar.js"></script>
+    <link rel="shortcut icon" href="img/kzk_logo_main.ico" type="image/x-icon">
 </head>
 <body>
     <div class="navbar" id="navbar">
@@ -20,11 +21,11 @@
                     $uid = $_SESSION['user_id'];
                     $conn = new mysqli("81.171.31.232","y4ch0_03032006","Polkij11!","y4ch0");
                     $conn->set_charset("utf8");
-                    $result = $conn->query("SELECT nazwaUzytkownika,typKonta,stanowisko FROM konta WHERE konta.id = '$uid'");
+                    $result = $conn->query("SELECT nazwaUzytkownika,typKonta,stanowisko,nrSluzbowy FROM konta WHERE konta.id = '$uid'");
                     if($row = $result->fetch_row()) {
                         if($row[1] == "Zarząd" || $row[1] == "Administracja") {
                             echo "<span class='title'>".$row[0]."</span>";
-                            echo "<span class='subtitle'>".$row[1]." (".$row[2].")</span>";
+                            echo "<span class='subtitle'>".$row[1]." (".$row[2].") <small>".$row[3]."</small></span>";
                         } else {
                             header("location:php/logout.php");
                         }
@@ -82,7 +83,7 @@
                             echo "<p><span class='tag warning'><i class=\"fa-solid fa-circle-exclamation\"></i> Wyświetlam zakres dziennika zdarzeń z zapisanego: ".$_SESSION["minDziennikData"]." - ".$_SESSION["maxDziennikData"]."</span></p>";
                             return;
                         } else {
-                            ReturnDziennik($uid,date("Y-m-d 00:00:00"),date("Y-m-d H:i:s"));
+                            ReturnDziennik($uid,date("Y-m-d 00:00:00"),date("Y-m-d 23:59:59"));
                         }
                     ?>
                 </table>
