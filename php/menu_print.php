@@ -1,6 +1,7 @@
 <?php
 function ReturnMenu($userId,$webPage) {
-    $conn = new mysqli("localhost","root","","y4ch0");
+    $conn = new mysqli("81.171.31.232","y4ch0_03032006","Polkij11!","y4ch0");
+    $conn->set_charset("utf8");
     $result = $conn->query("SELECT typKonta FROM konta WHERE konta.id = '$userId'");
     $row = $result->fetch_row();
     if($row[0] == "Pracownik") {

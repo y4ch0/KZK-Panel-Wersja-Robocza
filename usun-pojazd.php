@@ -2,6 +2,7 @@
     require_once("php/dziennik_zdarzen/dodaj.php");
     session_start();
     $conn = new mysqli("81.171.31.232","y4ch0_03032006","Polkij11!","y4ch0");
+    $conn->set_charset("utf8");
     $pid = $_SESSION['user_id'];
     $bid = $_GET['id'];
     $verify = $conn->query("SELECT * FROM konta WHERE typKonta IN ('Zarząd','Administracja') AND id ='$pid'");

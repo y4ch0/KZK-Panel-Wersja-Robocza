@@ -4,6 +4,7 @@
     $uid = $_SESSION['user_id'];
     $gid = $_GET['id'];
     $conn = new mysqli("81.171.31.232","y4ch0_03032006","Polkij11!","y4ch0");
+    $conn->set_charset("utf8");
     $result = $conn->query("SELECT typKonta FROM konta WHERE konta.id = '$uid'");
     if($row = $result->fetch_row()) {
         if($row[0] == "Zarząd" || $row[0] == "Administracja") {

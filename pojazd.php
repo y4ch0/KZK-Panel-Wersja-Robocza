@@ -2,6 +2,7 @@
     session_start();
     $uid = $_SESSION['user_id'];
     $conn = new mysqli("81.171.31.232","y4ch0_03032006","Polkij11!","y4ch0");
+    $conn->set_charset("utf8");
     $pid = $_GET['id'];
     $pojazdQuery = $conn->query("SELECT * FROM pojazdy WHERE pojazdy.id = $pid");
     if(!($row = $pojazdQuery->fetch_row())) {

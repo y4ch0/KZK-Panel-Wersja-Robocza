@@ -4,6 +4,7 @@ if(!$_SESSION) {
 }
 function ReturnGrafik($userId,$minGrafikData,$maxGrafikData) {
     $conn = new mysqli("81.171.31.232","y4ch0_03032006","Polkij11!","y4ch0");
+    $conn->set_charset("utf8");
     $result = $conn->query("SELECT typKonta FROM konta WHERE konta.id = '$userId'");
     $row = $result->fetch_row();
     if(!array_key_exists("minGrafikData",$_SESSION) || $_SESSION["minGrafikData"] != $minGrafikData) {

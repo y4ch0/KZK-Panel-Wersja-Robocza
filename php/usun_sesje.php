@@ -1,6 +1,7 @@
 <?php
     session_start();
     $conn = new mysqli("localhost","root","","y4ch0");
+    $conn->set_charset("utf8");
     $uid = $_SESSION['user_id'];
     $sesjaId = $_POST['sesja_id'];
     $validation1 = $conn->query("SELECT id FROM sesje WHERE sesje.id = $sesjaId AND sesje.hostId = (SELECT id FROM konta WHERE konta.id = '$uid')");

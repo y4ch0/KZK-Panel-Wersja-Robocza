@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KZK Bielki</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css"> 
     <script src="https://kit.fontawesome.com/7535758241.js" crossorigin="anonymous"></script>
     <script src="js/navbar.js"></script>
 </head>
@@ -19,6 +19,7 @@
                     session_start();
                     $uid = $_SESSION['user_id'];
                     $conn = new mysqli("81.171.31.232","y4ch0_03032006","Polkij11!","y4ch0");
+                    $conn->set_charset("utf8");
                     $result = $conn->query("SELECT nazwaUzytkownika,typKonta,stanowisko FROM konta WHERE konta.id = '$uid'");
                     if($row = $result->fetch_row()) {
                         echo "<span class='title'>".$row[0]."</span>";

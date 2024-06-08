@@ -18,7 +18,8 @@ init($redirect_url, $client_id, $secret_id, $bot_token);
 
 # Fetching user details | (identify scope)
 get_user();
-$conn = new mysqli("localhost","root","","y4ch0");
+$conn = new mysqli("81.171.31.232","y4ch0_03032006","Polkij11!","y4ch0");
+$conn->set_charset("utf8");
 $uid = $_SESSION['user_id'];
 $result = $conn->query("SELECT id FROM konta WHERE konta.id = '$uid'");
 if($result->num_rows < 1 || $result->num_rows > 1 ) {

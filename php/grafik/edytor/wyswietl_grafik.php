@@ -1,6 +1,7 @@
 <?php
     function ReturnGrafik_Edytor($uid,$data) {
         $conn = new mysqli("81.171.31.232","y4ch0_03032006","Polkij11!","y4ch0");
+        $conn->set_charset("utf8");
         $pracownicyQuery = $conn->query("SELECT * FROM grafik WHERE dataSesji = '$data' AND pracownikId IS NOT NULL");
         echo "<h2>Edytujesz dzień: ".$data."</h2>";
         echo "<div class='responsive-table no-bg'>
