@@ -96,6 +96,14 @@ function ReturnMenu($userId,$webPage) {
                 "Tytul" => "Spis pracowników",
                 "Ikona" => "fa-solid fa-person",
             ],
+            "dziennik-zdarzen.php" => [
+                "Tytul" => "Dziennik zdarzeń",
+                "Ikona" => "fa-solid fa-table",
+            ],
+            "raporty-sesyjne.php" => [
+                "Tytul" => "Raporty sesyjne",
+                "Ikona" => "fa-solid fa-pen",
+            ],
         ];
         foreach ($linkSet as $key => $value) {
             echo "<li>";
